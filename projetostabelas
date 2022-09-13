@@ -1,0 +1,24 @@
+use turmac;
+create table produto ( 
+cod_prod int primary key auto_increment, 
+ unit_prod char(3) not null,
+ desc_prod varchar(20) not null,
+ val_unit decimal(9,2)
+);
+show tables; 
+create table vendedor(
+cod_vend int primary key auto_increment,
+nome_vend varchar(40) not null,
+sal_fixo decimal(9,2),
+faixa_comiss char(1)
+);
+describe vendedor;
+show tables;
+create table pedido(
+num_pedido int primary key auto_increment,
+prazo_entr int not null,
+ fk_cod_cli int, 
+ fk_cod_vend int not null,
+ foreign key(fk_cod_cli) references cliente(cod_cli), 
+ foreign key (fk_cod_vend) references vendedor(cod_vend)
+);
